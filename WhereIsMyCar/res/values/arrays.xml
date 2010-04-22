@@ -1,0 +1,6 @@
+<resources>
+	<string-array name="select_view">
+		<item>Map View</item>
+		<item>Satellite View</item>
+	</string-array>
+</resources>
