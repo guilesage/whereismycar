@@ -44,8 +44,9 @@ public class WimcActivity extends MapActivity {
     public void onCreate(Bundle savedInstanceState) {
         //key api map home : 0EO15Zk8QjbSObBQF6wjyDuUE_wiYE52IIapHgw 
     	//key api map work : 0EO15Zk8QjbQj21VPuggM24lLV0W3dRk7MdUFIw
+		//key api map final: 0EO15Zk8QjbQ9hBTeaMDTLKdpBIy0OTX1tjoy2A
     	
-    	requestWindowFeature(Window.FEATURE_NO_TITLE); 
+    	//requestWindowFeature(Window.FEATURE_NO_TITLE); 
     	getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     	        
     	super.onCreate(savedInstanceState);
@@ -190,9 +191,8 @@ public class WimcActivity extends MapActivity {
             ioLocation.addOverlay(overlayitem);
             mapOverlays = mapView.getOverlays();
             mapOverlays.add(ioLocation);
-            
-            mapView.performClick();
-            mapView.refreshDrawableState();
+
+            mapView.invalidate();
         }
 	}
 	
@@ -205,6 +205,8 @@ public class WimcActivity extends MapActivity {
 		mapView.refreshDrawableState();
 		
 		mPrefsValues.deleteLocation();
+		
+		mapView.invalidate();
     }
 	
 	private class GpsLocationListener implements LocationListener {
@@ -222,7 +224,7 @@ public class WimcActivity extends MapActivity {
 		
 		@Override
 	    public void onLocationChanged(Location location) {
-			//mCurrentLocation = new GeoPoint((int)location.getLatitude(), (int)location.getLongitude());
+			
 	    }
 	}
 
